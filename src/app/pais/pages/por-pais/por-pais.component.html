@@ -11,6 +11,13 @@
         </app-pais-input>
         </div>
     </div>
+
+   <ul class="list-group">
+    <li *ngFor="let pais of paisesSugeridos" 
+         class="list-group-item list-group-item-action">
+          {{ pais.name.official }}
+    </li>
+   </ul>
     
     <hr>
 </div>

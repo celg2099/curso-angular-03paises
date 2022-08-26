@@ -35,6 +35,11 @@ export class PorRegionComponent {
   
       this.regionService.buscarByRegion( region ).subscribe( paises => {
         this.paises = paises;
+
+        this.paises.forEach((p,idx) => {
+           this.paises[idx].cca2 = this.paises[idx].alpha2Code;
+        });
+
         console.log(paises);
       }, (err) => {
                 this.paises = [];

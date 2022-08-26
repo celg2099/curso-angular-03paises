@@ -13,7 +13,7 @@ export class PaisService {
   private apiV2Url: string = 'https://restcountries.com/v2/';
 
   get httpParams() {
-    return new HttpParams().set('fields','name,capital,flags,population,cca2');
+    return new HttpParams().set('fields','name,capital,flags,population,alpha2Code,cca2');
   }
 
   constructor(private http: HttpClient) { }
