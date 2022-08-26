@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { switchMapTo } from 'rxjs';
-import { Country, Name } from '../../interfaces/pais.interface';
+import { Component } from '@angular/core';
+import { Country } from '../../interfaces/pais.interface';
 import { PaisService } from '../../services/pais.service';
 
 @Component({
@@ -29,12 +28,10 @@ export class PorPaisComponent  {
     this.termino = termino;
     this.paises = [];
 
-    this.paisService.buscarPais( this.termino ).subscribe( paises => {
-      this.paises = paises;
-      console.log(paises);
-    }, (err) => {
-              this.paises = [];
-              this.hayError = true;
+    this.paisService.buscarPais( this.termino )
+    .subscribe( paises => { this.paises = paises }, 
+               (err)   => { this.paises = [];
+                            this.hayError = true;
     });
  };  
 
@@ -42,7 +39,7 @@ export class PorPaisComponent  {
       this.hayError = false;
       this.termino = termino;
       this.mostrarSugerencias = true;
-       
+
       this.paisService.buscarPais( termino )
       .subscribe( paises => this.paisesSugeridos = paises.splice(0,5),
                   (err)  => this.paisesSugeridos = [] );
